@@ -51,18 +51,21 @@ public class HttpclientSpringConfig {
         return poolingHttpClientConnectionManager;
     }
 
-    @Bean //定期清理无效连接
+    @Bean
+    /**定期清理无效连接*/
     public IdleConnectionEvictor idleConnectionEvictor(){
         return new IdleConnectionEvictor(manager,1L, TimeUnit.HOURS);
     }
 
-    @Bean //定义HTTP Client对象，注意该对象需要设置scope="prototype":多例对象
+    @Bean
+    /**定义HTTP Client对象，注意该对象需要设置scope="prototype":多例对象*/
     @Scope("prototype")
     public CloseableHttpClient closeableHttpClient(){
         return HttpClients.custom().setConnectionManager(this.manager).build();
     }
 
-    @Bean //请求配置
+    @Bean
+    /**请求配置*/
     public RequestConfig requestConfig(){
         return RequestConfig.custom().setConnectTimeout(httpConnectTimeout)//创建连接最长时间
                 .setConnectionRequestTimeout(httpConnectionRequestTimeout)//从连接池中获取连接的最长时间
