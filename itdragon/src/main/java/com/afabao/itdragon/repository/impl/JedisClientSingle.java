@@ -2,9 +2,10 @@ package com.afabao.itdragon.repository.impl;
 
 import com.afabao.itdragon.repository.JedisClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
-
+@Service
 public class JedisClientSingle implements JedisClient {
 
     @Autowired

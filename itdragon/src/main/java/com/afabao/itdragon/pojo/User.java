@@ -42,10 +42,10 @@ public class User {
     private String platform;
 
     /**用户注册的时间*/
-    private Date createdDate;
+    private String createdDate;
 
     /**最后一次登录时间*/
-    private Date updatedDate;
+    private String updatedDate;
 
 
     public String getPassword() {
@@ -120,19 +120,19 @@ public class User {
         this.platform = platform;
     }
 
-    public Date getCreatedDate() {
+    public String getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(Date createdDate) {
+    public void setCreatedDate(String createdDate) {
         this.createdDate = createdDate;
     }
 
-    public Date getUpdatedDate() {
+    public String getUpdatedDate() {
         return updatedDate;
     }
 
-    public void setUpdatedDate(Date updatedDate) {
+    public void setUpdatedDate(String updatedDate) {
         this.updatedDate = updatedDate;
     }
 

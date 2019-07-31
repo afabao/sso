@@ -19,7 +19,7 @@ public class ItDragonUtil {
      */
     public static void entryptPassword(User user) {
         String salt = UUID.randomUUID().toString();
-        String tempPassword = salt + user.getPassword();
+        String tempPassword = salt + user.getPlainPassword();
         String md5Password = DigestUtils.md5DigestAsHex(tempPassword.getBytes());
         user.setSalt(salt);
         user.setPassword(md5Password);

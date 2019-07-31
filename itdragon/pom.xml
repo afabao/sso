@@ -11,6 +11,9 @@
     <groupId>com.afabao</groupId>
     <artifactId>itdragon</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+
+    <packaging>war</packaging>
+
     <name>itdragon</name>
     <description>单点登录系统sso</description>
 

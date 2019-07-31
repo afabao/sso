@@ -2,6 +2,7 @@ package com.afabao.itdragon.repository;
 
 import com.afabao.itdragon.pojo.User;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
@@ -32,16 +33,17 @@ public interface UserRepository extends PagingAndSortingRepository<User,Long>, J
      */
 
     /**通过账号查用户信息*/
-    User findAccount(String account);
+    User account(String account);
 
     /**获取指定时间以内以xx邮箱结尾的用户*/
-    List<User>  findByEmailEndingWithAndCreateDateLessThan(String email, String createDate);
+    List<User>  findByEmailEndingWithAndCreatedDateLessThan(String email, String createDate);
 
     @Query(value = "select count (u.id) from User u where u.platform = :platform and u.updatedDate <= :updatedDate")
     long getActiveUserCount(@Param("platform") String platform, @Param("updatedDate") String updatedDate);
 
     @Query(value = "select u from User u where u.email like %?1% and u.iphone like %?2%")
     List<User> findByEmailandIphoneLike(String email, String iphone);
-
+    @Modifying
+    @Query("UPDATE User u SET u.email = :email WHERE u.id = :id")
     void updateUserEmail(@Param("id") String id,@Param("email") String email);
 }
